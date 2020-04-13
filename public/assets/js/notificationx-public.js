@@ -116,13 +116,21 @@
 				if( body_push == 'pushed' || body_push == undefined ) {
 					/* add padding in body after initial delay */
 					var initTimeout = setTimeout(function () {
-						$('body').addClass('has-nx-bar').css('padding-' + position, barHeight);
+						if($('.eael-offcanvas-container').length) {
+							$('.eael-offcanvas-container').addClass('has-nx-bar').css('padding-' + position, barHeight);
+						}else {
+							$('body').addClass('has-nx-bar').css('padding-' + position, barHeight);
+						}
 						clearTimeout(initTimeout);
 					}, initialDelay);
 					/* remove padding in body after if auto hide is enable */
 					if(parseInt(auto_hide)) {
 						var timeoutAutoHide = setTimeout(function () {
-							$('body').css('padding-' + position, 0).removeClass('has-nx-bar');
+							if($('.eael-offcanvas-container').length) {
+								$('.eael-offcanvas-container').css('padding-' + position, 0).removeClass('has-nx-bar');
+							}else {
+								$('body').css('padding-' + position, 0).removeClass('has-nx-bar');
+							}
 							clearTimeout(timeoutAutoHide);
 						}, parseInt(duration) * 1000);
 					}
@@ -312,7 +320,12 @@
 
 		html.removeClass('nx-bar-active');
 		html.css('padding-top', 0);
-		bar.addClass('nx-bar-out').parents('body').css('padding-' + position, 0 ).removeClass('has-nx-bar');
+
+		if($('.eael-offcanvas-container').length) {
+			bar.addClass('nx-bar-out').parents('.eael-offcanvas-container').css('padding-' + position, 0 ).removeClass('has-nx-bar');
+		}else {
+			bar.addClass('nx-bar-out').parents('body').css('padding-' + position, 0 ).removeClass('has-nx-bar');
+		}
 		bar.removeClass('nx-bar-visible');
 		$.notificationx.active_pressbar = 0;
 	};
