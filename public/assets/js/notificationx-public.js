@@ -292,7 +292,11 @@
 				], {
 					duration: 300
 				});
-				$(bar).css('top', xAdminBarHeight + 'px');
+
+				if($('.eael-offcanvas-container').length === 0) {
+					$(bar).css('top', xAdminBarHeight + 'px');
+				}
+
 			}
 			$(bar).addClass('nx-bar-visible');
 			var body = $('body');
