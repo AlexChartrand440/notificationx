@@ -97,6 +97,7 @@
 				var id = bar.dataset.press_id,
 					duration = bar.dataset.hide_after,
 					auto_hide = bar.dataset.auto_hide,
+					sticky_bar = bar.dataset.sticky_bar,
 					close_forever = bar.dataset.close_forever,
 					start_date = new Date(bar.dataset.start_date),
 					end_date = new Date(bar.dataset.end_date),
@@ -117,7 +118,11 @@
 					/* add padding in body after initial delay */
 					var initTimeout = setTimeout(function () {
 						if($('.eael-offcanvas-container').length) {
-							$('.eael-offcanvas-container').addClass('has-nx-bar').css('padding-' + position, barHeight);
+							var adminBar = 0;
+							if( Boolean( sticky_bar ) ) {
+								adminBar = 32;
+							}
+							$('.eael-offcanvas-container').addClass('has-nx-bar').css('padding-' + position, barHeight );
 						}else {
 							$('body').addClass('has-nx-bar').css('padding-' + position, barHeight);
 						}

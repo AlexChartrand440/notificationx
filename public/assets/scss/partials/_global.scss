@@ -188,6 +188,7 @@ body.has-nx-bar, body.nx-press_bar-active{
 	z-index: 9;
 }
 
-body.admin-bar .eael-offcanvas-content-open .nx-bar.nx-position-top {
+body.admin-bar .eael-offcanvas-content-open .nx-bar.nx-position-top,
+body.admin-bar .notificationx-shortcode-wrapper>.nx-bar.nx-sticky-bar, body.admin-bar .nx-bar.nx-sticky-bar {
 	top: 32px;
 }
