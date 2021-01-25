@@ -399,7 +399,7 @@ class NotificationX_WooCommerce_Extension extends NotificationX_Extension {
         $orders = [];
         $from = strtotime( date( 'Y-m-d', strtotime( '-' . intval( $data[ '_nx_meta_display_from' ] ) . ' days') ) );
         $wc_orders = wc_get_orders( [
-            'status' => array( 'processing', 'completed', 'pending' ),
+            'status' => array( 'processing', 'completed' ),
             'date_created' => '>' . $from,
             'numberposts' => isset( $data['_nx_meta_display_last'] ) ? intval( $data['_nx_meta_display_last'] ) : 10,
         ] );
@@ -492,7 +492,7 @@ class NotificationX_WooCommerce_Extension extends NotificationX_Extension {
         }
 
         $status = $order->get_status();
-        $done = [ 'completed', 'processing', 'pending' ];
+        $done = [ 'completed', 'processing' ];
         if( ! in_array( $status, $done ) ){
             return false;
         }
